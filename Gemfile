@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -23,6 +24,15 @@ gem 'puma', '~> 3.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'factory_girl_rails'
+  gem 'ffaker'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'shoulda-matchers'
 end
 
 group :development do
