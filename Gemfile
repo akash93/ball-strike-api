@@ -35,6 +35,10 @@ group :test do
   gem 'shoulda-matchers'
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :development do
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
