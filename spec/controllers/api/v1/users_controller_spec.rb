@@ -32,6 +32,10 @@ RSpec.describe Api::V1::UsersController, type: :controller do
         expect(user_response[:email]).to eql @user_attributes[:email]
       end
 
+      it 'contains location headers' do
+        expect(response.headers).to have_key("Location")
+      end
+
       it { should respond_with 201 }
 
     end
@@ -54,5 +58,55 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
       it {should respond_with 422}
     end
+  end
+  
+  describe 'PUT/PATCH #update' do
+    
+    context 'When update is successful' do
+      before(:each) do
+        @user = FactoryGirl.create :user
+        patch :update, params: {id: @user.id, user: {email: 'test@example.com'}}, format: :json
+      end
+
+      it 'renders json representation of updated user' do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response[:email]).to eql 'test@example.com'
+      end
+
+      it 'sends location headers' do
+        expect(response.headers).to have_key("Location")
+      end
+
+      it {should respond_with 200}
+
+    end
+
+    context 'When update fails' do
+      before(:each) do
+        @user = FactoryGirl.create :user
+        patch :update, params: {id: @user.id, user: {email: 'test.com'}}, format: :json
+      end
+
+      it 'renders error json' do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response).to have_key(:errors)
+      end
+
+      it 'renders error message stating reason' do
+        user_response = JSON.parse(response.body, symbolize_names: true)
+        expect(user_response[:errors][:email]).to include 'is invalid'
+      end
+
+      it {should respond_with 422}
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    before(:each) do
+      @user = FactoryGirl.create :user
+      delete :destroy, params: { id: @user.id}, format: :json
+    end
+
+    it {should respond_with 204}
   end
 end
