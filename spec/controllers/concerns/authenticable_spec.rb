@@ -11,7 +11,7 @@ describe Authenticable do
   describe '#current_user' do
     before do
       @user = FactoryGirl.create :user
-      request.headers['Authentication'] = @user.auth_token
+      request.headers['Authorization'] = @user.auth_token
       allow(authentication).to receive(:request).and_return(request)
     end
 
@@ -34,5 +34,25 @@ describe Authenticable do
     end
 
     it { should respond_with 401 }
+  end
+
+  describe '#user_signed_in?' do
+    context 'when there is a user in sesssion' do
+      before do
+        @user = FactoryGirl.create :user
+        allow(authentication).to receive(:current_user).and_return(@user)
+      end
+
+      it { should be_user_signed_in }
+    end
+
+    context 'when there is no user in session' do
+      before do 
+        @user = FactoryGirl.create :user
+        allow(authentication).to receive(:current_user).and_return(nil)
+      end
+
+      it { should_not be_user_signed_in }
+    end
   end
 end
