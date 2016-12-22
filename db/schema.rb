@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222074700) do
+ActiveRecord::Schema.define(version: 20161222080537) do
 
   create_table "gamelevels", force: :cascade do |t|
     t.integer  "num_enemies",        default: 0
