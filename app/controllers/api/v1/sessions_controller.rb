@@ -5,6 +5,10 @@ class Api::V1::SessionsController < ApplicationController
     user_password = params[:session][:password]
     user = user_email.present? && User.find_by(email: user_email)
 
+    if user.nil?
+      return render json: { errors: 'No user found' }, status: 404
+    end
+
     if user.valid_password? user_password
       sign_in user, store: false
       user.generate_auth_token!

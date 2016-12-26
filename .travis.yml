@@ -12,7 +12,8 @@ install:
     - bundle install --without production
 
 before_script:
-    - rails db:migrate
+    - rails db:drop:all
+    - rails db:migrate:reset
 
 script:
     - bundle exec rspec
