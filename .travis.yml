@@ -12,6 +12,7 @@ install:
     - bundle install --without production
 
 before_script:
+    - rails db:drop:all
     - rails db:migrate:reset
 
 script:
