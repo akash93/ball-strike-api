@@ -26,6 +26,9 @@ The api is currently deployed on heroku and can be accessed [here](https://balls
         }
       }
     ```
+    Using curl:
+
+    `curl -H 'Content-Type:application/json,charset=utf-8' -X POST -d '{"user":{"email":"user@example.com", "password":"password"}}' https://ballstrike-api.herokuapp.com/api/users `
 
     The response will be the newly created user in the following format:
 
@@ -39,6 +42,31 @@ The api is currently deployed on heroku and can be accessed [here](https://balls
         "current_level_id": 1
       }
     ```
-  * Note the `auth_token` sent. This will be used for making further requests
+
+  * If you've already created a user before you can login by making a POST request to
+  `https://ballstrike-api.herokuapp.com/api/sessions` with the following post data
+
+  ```json
+    {
+      "session":{
+        "email":"Enter email",
+        "password": "Enter password"
+      }
+    }
+  ```
+    Using curl:
+
+    ```sh
+    curl -H 'Content-Type:application/json' -X POST -d '{"session":{"email":"user@example.com", "password":"password"}}'
+    ```
+    
+    The response will be the same user object as above.
+
+  * Note the `auth_token` received. This will be used for making further requests
   * Fetch the game level data by making a **GET** request to `https://ballstrike-api.herokuapp.com/api/gamelevels` with `Authorization` header value set to the `auth_token` received in the previous step
+
+    ```sh
+    curl -H 'Authorization:auth_token' https://ballstrike-api.herokuapp.com/api/gamelevels
+    ```
+
   * Update the `current_level_id` of the user by sending a **PATCH** request to `https://ballstrike-api.herokuapp.com/api/users/{user_id}`
