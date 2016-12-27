@@ -38,12 +38,11 @@ The api is currently deployed on heroku and can be accessed [here](https://balls
         "email": "akashkhan@gmail.com",
         "created_at": "2016-12-27T03:23:18.257Z",
         "updated_at": "2016-12-27T03:23:18.257Z",
-        "auth_token": "8nVsMfsUuHZeb_4DtxWX",
         "current_level_id": 1
       }
     ```
 
-  * If you've already created a user before you can login by making a POST request to
+  * Once you've already created a user before you can get the authentication token by making a POST request to
   `https://ballstrike-api.herokuapp.com/api/sessions` with the following post data
 
   ```json
@@ -60,7 +59,7 @@ The api is currently deployed on heroku and can be accessed [here](https://balls
     curl -H 'Content-Type:application/json' -X POST -d '{"session":{"email":"user@example.com", "password":"password"}}'
     ```
     
-    The response will be the same user object as above.
+    The response will be the same user object as above except that it will contain an additional field `auth_token`
 
   * Note the `auth_token` received. This will be used for making further requests
   * Fetch the game level data by making a **GET** request to `https://ballstrike-api.herokuapp.com/api/gamelevels` with `Authorization` header value set to the `auth_token` received in the previous step
