@@ -11,7 +11,7 @@ RSpec.describe Api::V1::GamelevelsController, type: :controller do
     end
   
     it 'returns total number of levels' do
-      expect(json_response.size).to eql 5
+      expect(json_response[:gamelevels].size).to eql 5
     end
 
     it { should respond_with 200 }
@@ -30,7 +30,7 @@ RSpec.describe Api::V1::GamelevelsController, type: :controller do
       end
 
       it 'returns the json representation of level created' do
-        expect(json_response[:num_enemies]).to eql @level_attributes[:num_enemies]
+        expect(json_response[:gamelevel][:num_enemies]).to eql @level_attributes[:num_enemies]
       end
 
       it { should respond_with 201 }
