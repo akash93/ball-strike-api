@@ -17,7 +17,6 @@ deploy:
     secure: SP3OOEyEaN/yQMXLezeAKqfjjAVLFdiNaNvew4WdzTmCUhPe1ElCPhl3KbV6niNwGjNYGuuzqLN6vjyyFchaBTSV3nKuVvE1HW0zqPyz0WU4czj8r6aYhSeRraeht/fWuG5v8YoJeR6sqKRB1SgyYgvkF9fm7l9EF6uHya0ZYZIuxG4uf2OPIJ77C8Ztglz2+PBFbweALBR1eZy533EtR01IHcG4Z/OS9vZspp+0VSYq/XJA4o2kA0oEDcKXT9wFRetonYCNXby6p+rjlAKXknx3TBcRQDZKYXWX30rxTMqRp1jGUPSPor2T1OerUK5MZ4W22xrBOfJXKwACQxTC1ARvP+aXZOt9bXsVDhT0/6mQGaN+aOKjMT0lgWlv+QmeyL7kW5x/M8s5OAhu4i6bA9aM0ANCEfhBl/BJSJ1RziV6c1InZk33R3m5Gmxbh6/aor5/wO5iJFhoc9a4/6KQ/C/D/9IzxKQE59ap/DQ80gZ0M8hA1g85/ldV6s9IJ7XldqPNsBj5CrZtS0kqCX0iU0JPY/i71UXIsR5V/zUAemk79z8yKXGudHo8a6/TuLM46JI1g2ZHIIPsybRzEQP3JTn1F2BN9DkYIIiomZPjG37iYG81h+fz3Hqh0GZN6P0/sQwaS5Wgtc/o3hKMroFlESg43aedHuY5lqYuJI+tP4M=
   app: ballstrike-api
   run:
-    - 'rails db:migrate:reset'
-    - 'rails db:seed'
+    - 'rails db:setup'
   on:
     repo: akash93/ball-strike-api

@@ -2,6 +2,8 @@
 
 Basic api connecting to [ BallStrike ]( https://github.com/akash93/ball-strike )
 
+The api is currently deployed on heroku and can be accessed [here](https://ballstrike-api.herokuapp.com)
+
 # Instructions
 
   * Clone the repo
