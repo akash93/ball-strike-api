@@ -13,7 +13,7 @@ class Api::V1::SessionsController < ApplicationController
       sign_in user, store: false
       user.generate_auth_token!
       user.save
-      render json: user, status: 200, location: [:api, user]
+      render json: user, serializer: Sessions::CreateSerializer, status: 200, location: [:api, user]
     else
       render json: { errors: 'Invalid credentials' }, status: 403
     end
