@@ -18,6 +18,11 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
         expect(json_response[:user][:email]).to eql @user.email
       end
 
+      it 'sends the auth_token for user' do
+        @user.reload
+        expect(json_response[:user]).to have_key(:auth_token)
+      end
+
       it { should respond_with 200 }
     end
 
