@@ -16,6 +16,15 @@ The api is currently deployed on heroku and can be accessed [here](https://balls
 
 ## Accessing the api on heroku
 
+  * There is a test user available for testing the api. Use following credentials for testing the api as a test user.
+
+    ```json
+      {
+        "email":"user@example.com",
+        "password": "password"
+      }
+
+    ```
   * Create a user by sending a **POST** request to `https://ballstrike-api.herokuapp.com/api/users` in with the following data:
 
     ```json
