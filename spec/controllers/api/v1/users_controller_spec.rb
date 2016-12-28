@@ -16,6 +16,11 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       expect(user_response[:email]).to eql @user.email
     end
 
+    it 'returns user without auth_token' do
+      user_response = json_response[:user]
+      expect(user_response).not_to have_key(:auth_token)
+    end
+
     it {should respond_with 200}
   end
 

@@ -8,8 +8,7 @@
 
 
 Gamelevel.create(num_balls: 1, num_enemies: 2, num_hits_per_enemy: 5)
-User.create(email: 'akash@gmail.com', password: 'password')
-User.create(email: 'akashkhan25@gmail.com', password: 'password')
+User.create(email: 'user@example.com', password: 'password')
 
 
 9.times do |i|
