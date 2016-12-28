@@ -6,9 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(email: 'akash@gmail.com', password: 'password');
-User.create(email: 'akashkhan25@gmail.com', password: 'password');
-
+User.create(email: 'user@example.com', password: 'password')
 
 10.times do |i|
   Gamelevel.create(num_balls:1, num_enemies: 2, num_hits_per_enemy: 5*(i+1))
