@@ -11,6 +11,7 @@ The api is currently deployed on heroku and can be accessed [here](https://balls
   * Clone the repo
   * Install gems using `bundle install --without production`
   * Run migrations using `rails db:migrate`
+  * Seed data using `rails db:seed`
   * Run tests `bundle exec rspec` or `rspec`
   * Run the server `rails server`
 
@@ -77,4 +78,4 @@ The api is currently deployed on heroku and can be accessed [here](https://balls
     curl -H 'Authorization:auth_token' https://ballstrike-api.herokuapp.com/api/gamelevels
     ```
 
-  * Update the `current_level_id` of the user by sending a **PATCH** request to `https://ballstrike-api.herokuapp.com/api/users/{user_id}`
+  * Update the `current_level_id` of the user by sending a **PATCH/PUT** request to `https://ballstrike-api.herokuapp.com/api/users/{user_id}`
